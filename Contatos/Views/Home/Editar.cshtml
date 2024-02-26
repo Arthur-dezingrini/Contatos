@@ -1,0 +1,43 @@
+﻿@using Contatos.Enums
+@model IndexModel
+
+
+<h1>Editar Contato</h1>
+
+	<form method="post" asp-controller="Home" asp-action="Editar">
+		<input type="hidden" asp-for=Id />
+
+    <div class="mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text" class="form-control" asp-for="Name" id="Name" placeholder="Name">
+        <span asp-validation-for="Name" class="text-danger" style="font-size: 12px"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="text" class="form-control" asp-for="Email" id="Email" placeholder="Email">
+        <span asp-validation-for="Email" class="text-danger" style="font-size: 12px"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Telefone" class="form-label">Telefone</label>
+        <input type="text" class="form-control" asp-for="Telefone" id="Telefone" placeholder="Telefone">
+        <span asp-validation-for="Telefone" class="text-danger" style="font-size: 12px"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label for="ddlCategoria" class="form-label">Categoria</label>
+        <select id="ddlCategoria" name="Categoria" class="form-select">
+            <option disabled selected hidden>Selecione uma categoria</option>
+            @foreach (var categoria in Enum.GetValues(typeof(Categoria)))
+            {
+                <option value="@categoria">@categoria</option>
+            }
+        </select>
+    </div>
+
+    <div class="d-flex gap-5 mt-5">
+        <button asp-controller="Home" asp-action="index" type="submit" class="btn btn-success w-50">Alterar</button>
+        <a asp-controller="Home" asp-action="index" class="btn btn-primary w-50">Voltar</a>
+    </div>
+</form>

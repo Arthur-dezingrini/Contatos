@@ -1,0 +1,49 @@
+﻿@using Contatos.Enums
+<div class="modal fade" id="modalAdicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAdicionarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAdicionarLabel">Adicionar Contato</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3" method="post" action="@Url.Action("AdicionarContato")">
+                    <div class="col-md-12">
+                        <label class="form-label">Nome</label>
+                        <input type="Text" class="form-control" name="Name">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Telefone</label>
+                        <input type="text" class="form-control" name="Telefone" id="Telefone">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="Email">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ddlEstado" class="form-label">Estado</label>
+                        @Html.DropDownList("Estado", (SelectList)ViewBag.Estados, "Selecione um estado", new { id = "ddlEstado", @class = "form-select", })
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ddlMunicipio" class="form-label">Município</label>
+                        @Html.DropDownList("Municipio", (SelectList)ViewBag.Municipios, "Selecione um município", new { id = "ddlMunicipio", @class = "form-select", })
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ddlCategoria" class="form-label">Categoria</label>
+                        <select id="ddlCategoria" name="Categoria" class="form-select">
+                            <option disabled selected hidden>Selecione uma categoria</option>
+                            @foreach (var categoria in Enum.GetValues(typeof(Categoria)))
+                            {
+                                <option value="@categoria">@categoria</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
