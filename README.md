@@ -1,1 +1,1 @@
-CRUD feito em C# usando o padão de estrutura MVC
+CRUD feito em C# usando o padrão de estrutura MVC
